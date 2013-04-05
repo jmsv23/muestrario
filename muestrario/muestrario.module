@@ -7,6 +7,10 @@
 *@see http://www.noticiasnet.mx
 */
 
+/**
+*se implementa el hook imagecache_default_presets
+* con este hook se genera un preset en imaga cache para las imagenes predeterminadas
+*/
 function muestrario_imagecache_default_presets() {
   $presets = array();
   $presets['muestrario_miniatura'] = array (
@@ -34,6 +38,14 @@ function muestrario_imagecache_default_presets() {
   );
   return $presets;
 }
+
+/**
+* implementacion del hook_init()
+*se inicializan los scripts necesarios para el funcionamiento del modulo
+*/
+function muestrario_init(){
+}
+
 
 /**
 *implementacion del hook_menu()
