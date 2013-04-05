@@ -34,3 +34,50 @@ function muestrario_imagecache_default_presets() {
   );
   return $presets;
 }
+
+/**
+*implementacion del hook_menu()
+*se genera un menu dentro de store con 3 submenus
+*
+*/
+
+function muestrario_menu(){
+	//definimos el menu principal
+	$items['admin/store/muestrario'] = array(
+		'title' => t('Muestrario Album digital'),
+		'description' => t('aqui puedes generar los muestrarios del album digital'),
+		'page callback' => 'muestrario_main',
+		'access arguments' => array('administer site configuration'),
+		'file' => 'muestrario.admin.inc',
+	);
+	
+	//definimos la pestaña default
+	$items['admin/store/muestrario/main'] = array(
+		'title' => t('muestrario main'),
+		'description' => t('Muestra un preview del catalogo'),
+		'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => 0,
+	);
+	
+	$items['admin/store/muestrario/catalogo'] = array(
+	'title' => 'catalogo',
+	'description' => 'agrega los catalogos del muestrario',
+	'page callback' => 'get_muestrario_catalogo',
+	'access arguments' => array('administer site configuration'),
+	'type' => MENU_LOCAL_TASK,
+	'file' => 'muestrario.admin.inc',
+	'weight' => 2,
+	);
+	
+	$items['admin/store/muestrario/item'] = array(
+	'title' => 'item',
+	'description' => 'agrega los items del muestrario',
+	'page callback' => 'get_muestrario_item',
+	'access arguments' => array('administer site configuration'),
+	'type' => MENU_LOCAL_TASK,
+	'file' => 'muestrario.admin.inc',
+	'weight' => 2,
+	);
+	
+	return $items;
+}
