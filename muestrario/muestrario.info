@@ -1,0 +1,7 @@
+; $Id$
+name = muestrario de album digital
+description = genera un bloque con las muestras de album digital y cuenta con un menu de administracion donde se puede editar los modelos del muestrario
+core = 6.x
+package = "Tienda"
+dependencies[] = imagecache
+php = 5.2

@@ -1,0 +1,58 @@
+<?php
+// $Id$
+function muestrario_install(){
+ drupal_install_schema('muestrario');
+ drupal_install_schema('muestitem');
+}
+function muestrario_uninstall(){
+  drupal_uninstall_schema('muestrario');
+  drupal_uninstall_schema('muestitem'); 
+}
+
+function muestrario_schema() {
+  $schema['muestrario'] = array(
+      'description' => t('almacena los bloques que generaran los codigos'),
+      'fields' => array(
+        'bid' => array(
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+        'nombre' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+      ),
+      'primary key' => array('bid'),  
+  );
+  $schema['muestitem'] = array(
+      'description' => t('almacena una conbinacion codigo DFP - url'),
+      'fields' => array(
+        'cid' => array(
+          'type' => 'serial',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+        ),
+		'bid' => array('type' => 'int', 'unsigned' => TRUE, 'not null' => TRUE),
+        'url' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+		'img' => array(
+          'type' => 'varchar',
+          'length' => 255,
+          'not null' => TRUE,
+        ),
+		'nombre' => array(
+          'type' => 'varchar',
+          'length' => 200,
+          'not null' => TRUE,
+        ),
+      ),
+      'primary key' => array('cid'),  
+  );
+  
+  return $schema;
+}

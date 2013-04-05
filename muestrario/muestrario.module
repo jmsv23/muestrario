@@ -1,0 +1,36 @@
+<?php
+
+/**
+*@file
+*@author Ing. Jose Manuel Santibañez Villanueva
+*modulo para generar un muestrario de los albumes digitales
+*@see http://www.noticiasnet.mx
+*/
+
+function muestrario_imagecache_default_presets() {
+  $presets = array();
+  $presets['muestrario_miniatura'] = array (
+    'presetname' => 'muestrario_miniatura',
+    'actions' =>
+    array (
+      0 =>
+      array (
+        'weight' => '0',
+        'module' => 'imagecache',
+        'action' => 'imagecache_scale',
+        'data' =>
+        array (
+          'width' => '100',
+        ),
+      ),
+	  1 => 
+	  array(
+	  	'weight' => '1',
+		'module' => 'imagecache',
+		'action' => 'imagecache_crop',
+		'data' => array('width' => '100', 'height' => '90','xoffset' => 'center', 'yoffset' => 'top'),
+	  ),
+    ),
+  );
+  return $presets;
+}
