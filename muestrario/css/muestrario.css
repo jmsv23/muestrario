@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+.muest-float,.cat-erase span{
+	display: none;
+}
+.muestrario-cat{
+	width: 50%;
+}
+.cat-erase{
+	background: url(../img/delete_icon.png) no-repeat;
+	width: 20px;
+	height: 25px;
+	border: none;
+	cursor: pointer;
+	cursor: hand\9;
+}

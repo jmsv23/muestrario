@@ -44,6 +44,8 @@ function muestrario_imagecache_default_presets() {
 *se inicializan los scripts necesarios para el funcionamiento del modulo
 */
 function muestrario_init(){
+	drupal_add_js(drupal_get_path('module','muestrario').'/js/muestrario.js');
+	drupal_add_css(drupal_get_path('module','muestrario').'/css/muestrario.css');
 }
 
 
@@ -89,6 +91,13 @@ function muestrario_menu(){
 	'type' => MENU_LOCAL_TASK,
 	'file' => 'muestrario.admin.inc',
 	'weight' => 2,
+	);
+	//direccion que controla la llamda ajax para eliminar
+	$items['muestrario/ajax/delete'] =array(
+	'page callback' => 'muestrario_ajax_delete',
+	'type' => MENU_CALLBACK,
+	'access arguments' => array('access content'),
+	'file' => 'muestrario.admin.inc',
 	);
 	
 	return $items;
