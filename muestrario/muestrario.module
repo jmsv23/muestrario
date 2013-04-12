@@ -24,7 +24,7 @@ function muestrario_imagecache_default_presets() {
         'action' => 'imagecache_scale',
         'data' =>
         array (
-          'width' => '100',
+          'width' => '78',
         ),
       ),
 	  1 => 
@@ -32,7 +32,7 @@ function muestrario_imagecache_default_presets() {
 	  	'weight' => '1',
 		'module' => 'imagecache',
 		'action' => 'imagecache_crop',
-		'data' => array('width' => '100', 'height' => '90','xoffset' => 'center', 'yoffset' => 'top'),
+		'data' => array('width' => '78', 'height' => '78','xoffset' => 'center', 'yoffset' => 'top'),
 	  ),
     ),
   );
@@ -103,4 +103,25 @@ function muestrario_menu(){
 	);
 	
 	return $items;
+}
+
+/**
+*implementacion del hook_block()
+*Generamos un bloque muestrario 
+*
+*/
+function muestrario_block($op='list', $delta=0, $edit=array())
+{
+	switch($opt)
+	{
+		case 'list':
+			$blocks[0]['muestrario'] = 'Catalogo album digital';
+			return $blocks;
+		break;
+		case 'view':
+			$blocks['subject'] = t('Este bloque muestra un catalogo de muestras para un producto en la tienda');
+			$blocks['content'] = generate_catalog_view();
+			return $blocks;
+		break;
+	}
 }

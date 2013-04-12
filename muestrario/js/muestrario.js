@@ -7,7 +7,7 @@ function clickDel(){
 		var nombre = this.querySelector('span').innerHTML;
 		div = document.querySelector('.muest-float');
 		$('.muest-float').slideDown(200);
-		$('.muest-float').children('p').html('estas seguro que quieres eliminar el elemento: '+nombre);
+		$('.muest-float').children('p').html('estas seguro que quieres eliminar el elemento "'+nombre+'", se eliminaran sus elementos relacionados en los atributos de producto');
 		$('.muest-float').children('#btn-si').attr('value',val);
 		$('.muest-float').children('#btn-si-item').attr('value',val);
 		$('.muest-float').slideDown(500);

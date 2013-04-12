@@ -22,3 +22,56 @@
 	cursor: pointer;
 	cursor: hand\9;
 }
+
+
+/*estilos del bloque*/
+
+.muest-catalog{
+	display: inline-table;
+	width: 48%;
+	vertical-align: top;
+	margin-right: 2%;
+}
+.muest-catalog > div{
+	margin-top: 3px;
+}
+.muest-catalog h3{
+	height: 21px;
+	font-family: Arial;
+	background-color: #ededed;
+	font-weight: bold;
+	color: #4c4c4c;
+	line-height: 20px;
+	padding: 0px 10px;
+}
+
+.muest-item{
+	width: 28%;
+	display: inline-table;
+	vertical-align: top;
+	margin-bottom: 10px;
+	text-align: center;
+}
+.item-middle{
+	margin: 0 8%;
+}
+.m-img,.m-link{
+	display: block;
+	margin: auto;
+}
+a.m-img{
+	border: #e5e5e5 solid 1px;
+	padding: 5px;
+	background-color: #fcfcfc;
+}
+a.m-link{
+	text-align: center;
+	color: #4c4c4c;
+	font-family: Arial;
+	font-size: 13px;
+	text-transform: capitalize;
+	margin-top: 5px;
+}
+a.m-link:hover{
+	color: #4c4c4c;
+}
