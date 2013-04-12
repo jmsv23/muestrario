@@ -23,6 +23,16 @@ function muestrario_schema() {
           'length' => 255,
           'not null' => TRUE,
         ),
+		'descripcion' => array(
+          'type' => 'varchar',
+          'length' => 300,
+          'not null' => TRUE,
+        ),
+		'aid' => array(
+		  'type' => 'int',
+		  'unsigned' => TRUE,
+		  'not null' => TRUE,
+		),
       ),
       'primary key' => array('bid'),  
   );
@@ -41,15 +51,25 @@ function muestrario_schema() {
           'not null' => TRUE,
         ),
 		'img' => array(
-          'type' => 'varchar',
-          'length' => 255,
+          'type' => 'int',
           'not null' => TRUE,
+		  'unsigned' => TRUE,
         ),
 		'nombre' => array(
           'type' => 'varchar',
           'length' => 200,
           'not null' => TRUE,
         ),
+		'aid' => array(
+		  'type' => 'int',
+		  'unsigned' => TRUE,
+		  'not null' => TRUE,
+		),
+		'oid' => array(
+		  'type' => 'int',
+		  'unsigned' => TRUE,
+		  'not null' => TRUE,
+		),
       ),
       'primary key' => array('cid'),  
   );

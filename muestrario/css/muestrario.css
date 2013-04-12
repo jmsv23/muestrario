@@ -5,7 +5,14 @@
 	display: none;
 }
 .muestrario-cat{
-	width: 50%;
+	min-width: 50%;
+}
+.muestrario-cat th{
+	font-weight: bold;
+}
+.muestrario-cat td,.muestrario-cat th{
+	padding: 7px;
+	text-align: center;
 }
 .cat-erase{
 	background: url(../img/delete_icon.png) no-repeat;

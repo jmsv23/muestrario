@@ -9,6 +9,7 @@ function clickDel(){
 		$('.muest-float').slideDown(200);
 		$('.muest-float').children('p').html('estas seguro que quieres eliminar el elemento: '+nombre);
 		$('.muest-float').children('#btn-si').attr('value',val);
+		$('.muest-float').children('#btn-si-item').attr('value',val);
 		$('.muest-float').slideDown(500);
 }
 
@@ -42,6 +43,11 @@ function noEliminar()
 Drupal.behaviors.muestrario = function(context) {
   $('#btn-si').click(function(){
     $.get('/portal/muestrario/ajax/delete/catalogo/'+this.value , null, tablaResponse);
+    return false;
+  });
+  $('#btn-si-item').click(function(){
+	  console.log('se esta haciendo el click')
+    $.get('/portal/muestrario/ajax/delete/item/'+this.value , null, tablaResponse);
     return false;
   });
 }

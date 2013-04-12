@@ -44,6 +44,8 @@ function muestrario_imagecache_default_presets() {
 *se inicializan los scripts necesarios para el funcionamiento del modulo
 */
 function muestrario_init(){
+	$path = file_create_path("muestrario");
+	file_check_directory($path, FILE_CREATE_DIRECTORY);
 	drupal_add_js(drupal_get_path('module','muestrario').'/js/muestrario.js');
 	drupal_add_css(drupal_get_path('module','muestrario').'/css/muestrario.css');
 }

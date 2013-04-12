@@ -1,0 +1,23 @@
+//crear atributo
+$objeto =  new stdClass();
+	$objeto->aid = null;
+	$objeto->name = 'prueba de attributo';
+	$objeto->label = 'etiqueta de ayuda';
+	$objeto->ordering = 0;
+	$objeto->required = 0;
+	$objeto->display = 1;
+	$objeto->description = 'descripcion de ayuda';
+	uc_attribute_save($objeto);
+	
+	
+	
+//borrar atributo
+	uc_attribute_delete($aid);
+	
+	
+// devolver el valor de ultimo indexado
+
+$res = db_query('SELECT MAX(aid) as "aid" FROM {uc_attributes}');
+	while($row = db_fetch_array($res))
+	$val = $row['aid'];
+	$output .=  'res: '.$val;
