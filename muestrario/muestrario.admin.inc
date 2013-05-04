@@ -10,15 +10,17 @@ function generate_catalog_view()
 {
 	$output = '';
 	$res = db_query('SELECT * FROM {muestrario} ORDER BY nombre');
+	$output .= '<div class="muestrario-all">';
 	while($row = db_fetch_array($res))
 	{
-		$output .= '<div class="muest-catalog">';
+		$output .= '<div class="muest-catalog muest-catalog-'.$row['aid'].'">';
 		$output .= '<h3>'.$row['nombre'].'</h3>';
 		$output .='<div>';
 		$output .= generate_muestrario_item_view($row['bid']);
 		$output .= '</div>';
 		$output .= '</div>';
 	}
+	$output .= '</div>';
 return $output;
 }
 //generamos el html del item

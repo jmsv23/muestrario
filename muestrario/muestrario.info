@@ -4,4 +4,3 @@ description = genera un bloque con las muestras de album digital y cuenta con un
 core = 6.x
 package = "Tienda"
 dependencies[] = imagecache
-php = 5.2

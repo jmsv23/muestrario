@@ -48,6 +48,7 @@ function muestrario_init(){
 	file_check_directory($path, FILE_CREATE_DIRECTORY);
 	drupal_add_js(drupal_get_path('module','muestrario').'/js/muestrario.js');
 	drupal_add_css(drupal_get_path('module','muestrario').'/css/muestrario.css');
+	module_load_include('inc', 'muestrario', 'muestrario.admin');
 }
 
 
@@ -64,7 +65,7 @@ function muestrario_menu(){
 		'description' => t('aqui puedes generar los muestrarios del album digital'),
 		'page callback' => 'muestrario_main',
 		'access arguments' => array('administer site configuration'),
-		'file' => 'muestrario.admin.inc',
+		//'file' => 'muestrario.admin.inc',
 	);
 	
 	//definimos la pestaña default
@@ -81,7 +82,7 @@ function muestrario_menu(){
 	'page callback' => 'get_muestrario_catalogo',
 	'access arguments' => array('administer site configuration'),
 	'type' => MENU_LOCAL_TASK,
-	'file' => 'muestrario.admin.inc',
+	//'file' => 'muestrario.admin.inc',
 	'weight' => 2,
 	);
 	
@@ -91,7 +92,7 @@ function muestrario_menu(){
 	'page callback' => 'get_muestrario_item',
 	'access arguments' => array('administer site configuration'),
 	'type' => MENU_LOCAL_TASK,
-	'file' => 'muestrario.admin.inc',
+	//'file' => 'muestrario.admin.inc',
 	'weight' => 2,
 	);
 	//direccion que controla la llamda ajax para eliminar
@@ -99,29 +100,28 @@ function muestrario_menu(){
 	'page callback' => 'muestrario_ajax_delete',
 	'type' => MENU_CALLBACK,
 	'access arguments' => array('access content'),
-	'file' => 'muestrario.admin.inc',
+	//'file' => 'muestrario.admin.inc',
 	);
 	
 	return $items;
 }
 
+
+
 /**
-*implementacion del hook_block()
-*Generamos un bloque muestrario 
-*
+* Implementation of hook_block()
 */
-function muestrario_block($op='list', $delta=0, $edit=array())
-{
-	switch($opt)
-	{
+function muestrario_block($op='list', $delta=0, $edit=array()) {
+	switch ($op) {
 		case 'list':
-			$blocks[0]['muestrario'] = 'Catalogo album digital';
-			return $blocks;
-		break;
+			$blocks[0]['info'] = 'muestrario';//_carruseln_get_bloques_lista();//genera la lista de bloques creados en build/block
+			$blocks[0]['cache'] = BLOCK_NO_CACHE;
+		return $blocks;
 		case 'view':
-			$blocks['subject'] = t('Este bloque muestra un catalogo de muestras para un producto en la tienda');
+			$blocks['subject'] = '';
 			$blocks['content'] = generate_catalog_view();
-			return $blocks;
-		break;
+			//$blocks = _get_carrusel_bloque($delta);//genera el contenido de cada bloque
+		return $blocks;
 	}
 }
+

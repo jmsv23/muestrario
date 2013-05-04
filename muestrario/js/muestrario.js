@@ -13,10 +13,59 @@ function clickDel(){
 		$('.muest-float').slideDown(500);
 }
 
-
+function limpiarId(id)
+{
+	id = id.toString().replace('muest-catalog muest-catalog-','s');
+	return id;
+}
 
 $(document).ready(function(e) {
 		control_listener();
+		
+		
+		//esconder todos los bloques de muestrario
+		//$('.muest-catalog').css('display','none');
+		
+		
+		$('select').change(function(){
+			var cls = new Array();
+			$('.attribute').each(function(index, element) {
+                cls.push(this.className);
+            });
+			
+			
+			var cat = $('.muest-catalog');
+				$('.muestrario-all').html('');
+				var reo = new Array();
+				for(var i = 0,limit = cat.length; i < limit; i++ )
+				{
+				reo[limpiarId(cat[i].className)] = cat[i];
+				}
+			
+			
+			for(var i = 0,limit = cls.length; i < limit; i++ )
+			{
+				cls[i] = cls[i].toString().replace('attribute attribute-','');
+				cls[i] = cls[i].toString().replace(' even','');
+				cls[i] = cls[i].toString().replace(' odd','');
+				cls[i] = parseInt(cls[i]);
+			}
+			console.log(cls);
+			cls.forEach(function(value){
+				if($('.attribute-'+value).css('display') == 'block')
+				{
+					$('.muestrario-all').append(reo['s'+value]);
+				}
+				});
+				
+			cls.forEach(function(value){
+				if($('.attribute-'+value).css('display') != 'block')
+				{
+					$('.muestrario-all').append(reo['s'+value]);
+				}
+				});
+			});
+		
 });
 
 
